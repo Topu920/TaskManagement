@@ -1,0 +1,54 @@
+Install necessary NuGet packages
+Add the following NuGet packages to work with SQL Server database and scaffolding, and run the following commands in Package Manager Console (Click Tools -> NuGet Package Manager ->  Package Manager Console).
+
+This package helps generate controllers and views.
+
+Install-Package Microsoft.VisualStudio.Web.CodeGeneration.Design -Version 3.1.0
+This package helps create database context and model classes from the database.
+
+Install-Package Microsoft.EntityFrameworkCore.Tools -Version 3.1.0
+Database provider allows Entity Framework Core to work with SQL Server.
+
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 3.1.0
+It provides support for creating and validating a JWT token.
+
+Install-Package IdentityModel.Tokens.Jwt -Version 5.6.0
+This is the middleware that enables an ASP.NET Core application to receive a bearer token in the request pipeline.
+
+Install-Package Microsoft.AspNetCore.Authentication.JwtBearer -Version 3.1.0
+
+//Scaffold-DbContext "Server=192.168.0.13,4368;Database=ERPMarchDB; User Id=softadmin;password=w23eW@#E;Trusted_Connection=False;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -f
+//Scaffold-DbContext "Data Source=192.168.0.13,4368;Initial Catalog=ERPMarchDB; User Id=softadmin; password=w23eW@#E; Connect Timeout=30;Encrypt=False;TrustServerCertificate=False; Trusted_Connection=False;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+
+//For Spacific Model Scaffold
+ //Scaffold-DbContext "Data Source=192.168.0.13,4368;Initial Catalog=ERPMarchDB; User Id=softadmin; password=w23eW@#E; Connect Timeout=30;Encrypt=False;TrustServerCertificate=False; Trusted_Connection=False;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Tables Buyer,BuyerBrand,BuyerDepartment,MerchProductCategory,StyleSeason,StyleMaster,StyleDetails -f 
+
+
+//Scaffold Auth existing model
+Scaffold-DbContext Name=ConnectionStrings:UserConnectionsString Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities\Models\Auth -Tables UserInfo -f
+
+//Scaffold CoreERP existing model
+Scaffold-DbContext Name=ConnectionStrings:hrmsConnectionsString Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities\Models\HrmsModels -Tables Ogranogram_ApplicationsApproval,HumanResource_EmployeeBasic,Common_Department,Common_Designation,HumanResource_EmployeeContact -f
+
+
+//Scaffold ERPMarchDb Existing Model
+//Scaffold-DbContext "Data Source=192.168.0.13,4368;Initial Catalog=ERPMarchDB; User Id=softadmin; password=w23eW@#E;Trusted_Connection=false;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -f
+
+//Scaffold ERPINVDB Existing Model
+//Scaffold-DbContext "Data Source=192.168.0.13,4368;Initial Catalog=ERPINVDB; User Id=softadmin; password=w23eW@#E;Trusted_Connection=false;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir InvModels -f
+
+//Scaffold TaskDb Existing Model
+//Scaffold-DbContext "Data Source=192.168.0.13,4368;Initial Catalog=TaskManagement; User Id=softadmin; password=w23eW@#E;Trusted_Connection=false;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities\Models -f
+Scaffold-DbContext Name=ConnectionStrings:DefaultConnection  Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities\Models -f
+
+For Visual Studio Error: 
+Each package is licensed to you by its owner. NuGet is not responsible for, 
+nor does it grant any licenses to, third-party packages. Some packages may 
+include dependencies which are governed by additional licenses. Follow the package source 
+(feed) URL to determine any dependencies.
+
+Start PowerShell as Administrator and run the following command:
+mkdir "C:\Program Files (x86)\Microsoft SDKs\NuGetPackagesFallback"
+Then restart Visual Studio and everything should work.
+SHuvo
