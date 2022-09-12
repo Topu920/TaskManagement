@@ -1,0 +1,121 @@
+﻿@{
+    ViewData["Title"] = "Task";
+}
+@*<input id="userId" hidden value="@ViewBag.UserId"/>
+*@
+<style>
+    textarea {
+        border:none;
+        width:100%;
+        resize: none;
+
+    }
+    textarea:focus {
+        outline:none;
+        resize: none;
+    }
+    #gridTaskHistory .k-alt, #gridComment .k-alt  {
+        background-color: rgba(0,0,0,.08)
+    }
+</style>
+
+<div class="row mb-2">
+
+    <div class="col-md-12" id="divMyTaskSummery">
+        <div class="row mt-2">
+            <div class="col-sm-6">
+                <h5 class="font-weight-bold text-uppercase">All Task</h5>    
+            </div>
+        </div>
+
+        <partial name="~/Views/Task/_TaskSummery.cshtml" />
+    </div>
+</div>
+
+<div class="modal fade" id="TaskModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="font-weight-bold text-uppercase">Task Info</h4>
+                <div>
+                <button type="button" id="btnHistory" class="btn btn-sm text-secondary" data-toggle="modal" data-target="#historyModalCenter"  title="Task History">
+                     <i class="far fa-clock fa-lg"></i>
+                </button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+            </div>
+            <div class="modal-body mb-5">
+                <div class="row justify-content-md-center my-2">
+                    <div class="col-md-5">
+                        <input hidden id="taskId"/>
+                        <p id="projectTitle" class="font-weight-bold text-muted text-uppercase"></p>    
+                        <p id="projectDescription" class="font-weight-bold text-muted text-uppercase"></p>    
+                        <p id="taskName" class="font-weight-bold text-muted text-uppercase"></p>    
+                        <p id="taskDescription" class="font-weight-bold text-muted text-uppercase"></p>    
+                    </div>
+                    <div class="col-md-5">
+                        <h6 id="eddate" class="font-weight-bold text-muted text-uppercase"></h6>
+                        <h6 id="statueName" class="font-weight-bold text-muted text-uppercase"></h6>
+                        <div class="row changeStatus">
+                            <div class="col-auto">
+                                <label class="pt-1">Status</label>
+                            </div>
+                            <div class="col">
+                                <input id="txtTaskStatus" name="txtTaskStatus" style="width: 100%;"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <hr/>
+                
+                <div class="row ">
+                    <div class="col-md-6 pl-5">
+                        <textarea id="texComment" rows="1" oninput="TaskSummeryHelper.TextareaHeight(this)"  placeholder=" Add a Comment..."></textarea>
+                    </div>
+                    <div class="col-md-5">
+                        @*<input id='cmntFileUpload' type='file' multiple/>
+                        <button class="btn" id="btnUploadFile">
+                            <i class="fa fa-paperclip text-secondary" aria-hidden="true"></i>
+                        </button>*@
+                    <input name="files" id="files" type="file" />                       
+                    </div>
+                    <div class="col-md-1">
+                         <button  class="btn btn-primary btn-sm rounded-circle" id="saveCommentAndFile" title="Save Comment"><i class="fa fa-arrow-up text-white" aria-hidden="true"></i></button>
+                    </div>
+                    @*<div class="col-md-12" id="showFile">
+
+                    </div>*@
+                </div>
+                <div class="previousComment my-2">
+                    <div id="gridComment"></div>
+                </div>
+            </div>
+@*            <div class="mt-5"></div>*@
+        </div>
+    </div>
+</div>
+
+<div class="modal  fade" id="historyModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Task Histoy</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="gridTaskHistory"></div>
+            </div>
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/Task/TaskSettings.js" asp-append-version="true"></script>
+    <script src="~/Scripts/Task/TaskSummery.js" asp-append-version="true"></script>
+    <script src="~/Scripts/Task/TaskDetails.js" asp-append-version="true"></script>
+} 

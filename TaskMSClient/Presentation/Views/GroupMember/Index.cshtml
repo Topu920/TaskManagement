@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Project";
+}
+<div class="row mb-2">
+
+    <div class="col-md-12" id="divGroupSummery">
+        <div class="m-2">
+            <button type="button" id="btnNewGroup" class="btn btn-info btn-sm">
+                <i class="fa fa-plus mx-1"></i>
+                New Group 
+            </button>
+        </div>
+        <partial name="~/Views/GroupMember/_GroupMemberSummery.cshtml" />
+    </div>
+    <div class="col-md-12 d-none" id="divGroupDetails">
+        <div class="m-2">
+            <button type="button" id="btnBackGroup" class="btn btn-danger btn-sm">
+                <i class="fa fa-backward mx-1"></i>
+                Back
+            </button>
+            <button type="button" id="btnAddGroup" class="btn btn-success btn-sm">
+                <i class="fa fa-save mx-1"></i>
+                Save
+            </button>
+        </div>
+        <partial name="~/Views/GroupMember/_GroupMemberDetails.cshtml" />
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/GroupMember/GroupMemberSettings.js" asp-append-version="true"></script>
+    <script src="~/Scripts/GroupMember/GroupMemberSummery.js" asp-append-version="true"></script>
+    <script src="~/Scripts/GroupMember/GroupMemberDetails.js" asp-append-version="true"></script>
+} 

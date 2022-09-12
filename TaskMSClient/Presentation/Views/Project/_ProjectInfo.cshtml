@@ -1,0 +1,132 @@
+﻿<style>
+    #panelbarMember {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    /*
+         .k-grid .k-header {
+            display: none;
+        }*/
+    .customer-photo {
+        display: inline-block;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-size: 32px 35px;
+        background-position: center center;
+        vertical-align: middle;
+        line-height: 32px;
+        box-shadow: inset 0 0 1px #999, inset 0 0 10px rgba(0,0,0,.2);
+        margin-left: 5px;
+    }
+
+    .customer-name {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 32px;
+        padding-left: 3px;
+    }
+
+    #panelbar.k-panelbar > .k-item > .k-link,
+    #panelbar.k-panelbar > .k-item > .k-link .k-icon,
+    #panelbar.k-panelbar > .k-item > .k-link:hover {
+        background-color: #BDBDBD
+    }
+
+/*    #panelbarMember.k-panelbar > .k-item > .k-link,
+    #panelbarMember.k-panelbar > .k-item > .k-link .k-icon,
+    #panelbarMember.k-panelbar > .k-item > .k-link:hover {
+        background-color: #BDBDBD
+    }*/
+    .form-group .edit input{
+        border: none;
+    }
+    
+</style>
+<div class="row px-2">
+    <div class="col-md-12">
+        <ul id="panelbar">
+            <li class="k-state-active">
+                <span class="k-link k-state-selected text-light">
+                    Project Info
+                </span>
+                <div style="padding: 10px;">
+                    <div class="col-md-12 row">
+                        <div class="col-md-6">
+                            <div class="form-horizontal">
+                                <input type="text" id="editHdnProjectId" hidden />
+                                <div class="form-group row">
+                                    <label for="editTxtTitle" class="control-label col-md-3 text-muted">Title</label>
+                                    <div class="col-md-8">
+                                        <input autocomplete="off" style="width:100%" type="text" class="form-control text-muted edit" id="editTxtTitle" name="editTxtTitle" placeholder="Set Project Title">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="editTxtStartDate" class="control-label col-md-3 text-muted">Start Date</label>
+                                    <div class="col-md-8">
+                                        <input type="datetime" class="form-control edit k-textboxsmall" id="editTxtStartDate" name="editTxtStartDate" placeholder="Set Starting Date" style="height:25px">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="editTxtDueDate" class="control-label col-md-3 text-muted">Due Date</label>
+                                    <div class="col-md-8">
+                                        <input type="datetime" class="form-control edit" id="editTxtDueDate" name="editTxtDueDate" placeholder="Set Due Date" style="height:25px">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-horizontal">
+                                <div class="form-group row">
+                                    <label for="editCmbStatus" class="control-label col-md-3 text-muted">Status</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control edit" id="editCmbStatus" style="height:25px">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="editTxtDescription" class="control-label col-md-3 text-muted">Description</label>
+                                    <div class="col-md-9">
+                                        <textarea class="form-control edit" id="editTxtDescription" name="editTxtDescription" rows="3" placeholder="Set Project Description"></textarea>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="k-state-active">
+                <span class="k-link k-state-selected">
+                    Project Task
+                    <a href="#" class="text-decoration-none text-light"><i class="fa fa-plus-circle" id="addTask"></i></a>
+                </span>
+                <div style="padding: 10px;">
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div id="gridProjectTask"></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    @*<div class="col-md-5">
+        <div id="example">
+            <ul id="panelbarMember">
+                <li class="k-state-active">
+                    <span class="k-link k-state-selected">
+                        Project Member
+                        <a href="#" class="text-decoration-none text-light"><i class="fa fa-plus-circle" id="addMember"></i></a>
+                    </span>
+                    <div style="padding: 10px;">
+                        <div class="row">
+                            <div class="col-md-12 px-1">
+                                <div id="gridProjectMember"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>*@
+</div>

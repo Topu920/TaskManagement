@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Calendar";
+}
+<link rel="stylesheet" href="~/lib/fullcalendar/main.min.css" asp-append-version="true">
+@*<link rel="stylesheet" href="~/lib/fullcalendar/fullcalendar.min.css" media="print" asp-append-version="true">
+*@
+<div id="calendar"></div>
+
+
+
+<div class="modal  fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="calendarModalTitle">Task Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <p id="projectTitle" class="font-weight-bold text-muted text-uppercase"></p>    
+                    <p id="projectDescription" class="font-weight-bold text-muted text-uppercase"></p>    
+                    <p id="taskName" class="font-weight-bold text-muted text-uppercase"></p>    
+                    <p id="taskDescription" class="font-weight-bold text-muted text-uppercase"></p>   
+                    <p id="taskOwner" class="font-weight-bold text-muted text-uppercase"></p>
+                    <p id="taskCreateDate" class="font-weight-bold text-muted text-uppercase"></p>
+                    <p id="taskDueDate" class="font-weight-bold text-muted text-uppercase"></p>
+                    <p id="taskFinishDate" class="font-weight-bold text-muted text-uppercase"></p>
+                    <p id="statueName" class="font-weight-bold text-muted text-uppercase"></p>
+                </div>
+                <div id="taskMember">
+
+                </div>
+                <div id="group">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/plugins/moment/moment.min.js"></script>
+  <script src="~/lib/fullcalendar/main.min.js"></script>
+    <script src="~/Scripts/Caneldar/CaneldarSettings.js" asp-append-version="true"></script>
+    <script src="~/Scripts/Caneldar/CaneldarDetails.js" asp-append-version="true"></script>
+
+}

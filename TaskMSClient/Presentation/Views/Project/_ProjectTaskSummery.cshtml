@@ -1,0 +1,136 @@
+﻿<style>
+    textarea {
+        border:none;
+        width:100%;
+        resize: none;
+
+    }
+    textarea:focus {
+        outline:none;
+        resize: none;
+    }
+
+    #taskListPanelbar.k-panelbar > .k-item > .k-link,
+    #taskListPanelbar.k-panelbar > .k-item > .k-link .k-icon,
+    #taskListPanelbar.k-panelbar > .k-item > .k-link:hover {
+        background-color: #BDBDBD
+    }
+
+    .form-group .edit input{
+        border: none;
+    }
+    
+</style>
+<div class="row py-2">
+    <div class="col-md-12">
+        <ul id="taskListPanelbar">
+            <li class="k-state-active">
+                <span class="k-link k-state-selected">
+                    Project Task
+@*                    <a href="#" class="text-decoration-none text-light"><i class="fa fa-plus-circle" id="addTask"></i></a>
+*@                </span>
+                <div style="padding: 10px;">
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div id="gridTaskSummery"></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    @*<div class="col-md-5">
+        <div id="example">
+            <ul id="panelbarMember">
+                <li class="k-state-active">
+                    <span class="k-link k-state-selected">
+                        Project Member
+                        <a href="#" class="text-decoration-none text-light"><i class="fa fa-plus-circle" id="addMember"></i></a>
+                    </span>
+                    <div style="padding: 10px;">
+                        <div class="row">
+                            <div class="col-md-12 px-1">
+                                <div id="gridProjectMember"></div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>*@
+</div>
+
+<div class="modal fade" id="TaskModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="font-weight-bold text-uppercase">Task Info</h4>
+                <div>
+                    <button type="button" id="btnTaskHistory" class="btn btn-sm text-secondary" data-toggle="modal" data-target="#taskHistoryModalCenter" title="Task History">
+                        <i class="far fa-clock fa-lg"></i>
+                    </button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body mb-5">
+                <div class="row justify-content-md-center my-2">
+                    <div class="col-md-5">
+                        <input hidden id="taskId" />
+                        <p id="projectTitle" class="font-weight-bold text-muted text-uppercase"></p>
+                        <p id="projectDescription" class="font-weight-bold text-muted text-uppercase"></p>
+                        <p id="taskName" class="font-weight-bold text-muted text-uppercase"></p>
+                        <p id="taskDescription" class="font-weight-bold text-muted text-uppercase"></p>
+                    </div>
+                    <div class="col-md-5">
+                        <h6 id="eddate" class="font-weight-bold text-muted text-uppercase"></h6>
+                        <h6 id="statueName" class="font-weight-bold text-muted text-uppercase"></h6>
+                        @*<div class="row changeStatus">
+                            <div class="col-auto">
+                                <label class="pt-1">Status</label>
+                            </div>
+                            <div class="col">
+                                <input id="txtTaskStatus" name="txtTaskStatus" style="width: 100%;" />
+                            </div>
+                        </div>*@
+                    </div>
+
+                </div>
+                <hr />
+
+                <div class="row ">
+                    <div class="col-md-6 pl-5">
+                        <textarea id="texTaskComment" rows="1" oninput="ProjectTaskDetailsHelper.TextareaHeight(this)" placeholder=" Add a Comment..."></textarea>
+                    </div>
+                    <div class="col-md-5">
+
+                        <input name="files" id="files" type="file" />
+                    </div>
+                    <div class="col-md-1">
+                        <button class="btn btn-primary btn-sm rounded-circle" id="saveTaskCommentAndFile" title="Save Comment"><i class="fa fa-arrow-up text-white" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <div class="previousComment my-2">
+                    <div id="gridTaskCommentInProject"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal  fade" id="taskHistoryModalCenter" tabindex="-1" role="dialog" aria-labelledby="taskModalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="taskModalTitle">Task Histoy</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="gridTaskHistoryInProject"></div>
+            </div>
+        </div>
+    </div>
+</div>

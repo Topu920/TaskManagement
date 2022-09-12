@@ -1,0 +1,110 @@
+﻿@{
+    ViewData["Title"] = "Project";
+}
+<style>
+    #gridProjectHistory .k-alt, #gridTaskHistoryInProject .k-alt, #gridTaskCommentInProject .k-alt {
+        background-color: rgba(0,0,0,.08)
+    }
+</style>
+<input id="projectId" hidden value="@ViewBag.Id"/>
+
+<div class="row mb-2">
+
+    <div class="col-md-12" id="divProjectSummery">
+        <div class="row mt-2">
+            <div class="col-sm-6">
+                <h5 id="projectTitle" class="font-weight-bold text-uppercase"></h5>    
+            </div>
+            <div class="col-sm-6 float-right">
+                <button type="button" id="btnHistory" class="btn btn-sm text-secondary float-right" data-toggle="modal" data-target="#historyModalCenter" title="Project History">
+                     <i class="far fa-clock fa-lg"></i>
+                </button>
+            </div>
+            @*<div class="col-sm-6">
+                <button type="button" id="btnNewProject" class="btn btn-info btn-sm float-right" data-toggle="modal" data-target="#projectModalCenter">
+                    <i class="fa fa-plus mx-1"></i>
+                    New Project
+                </button>
+            </div>*@
+        </div>
+
+        <partial name="~/Views/Project/_ProjectTaskSummery.cshtml" />
+    </div>
+</div>
+
+
+<div class="modal  fade" id="historyModalCenter" tabindex="-1" role="dialog" aria-labelledby="ModalProjectTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalProjectTitle">Project Histoy</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="gridProjectHistory"></div>
+            </div>
+    </div>
+  </div>
+</div>
+@*
+<div class="modal fade" id="projectModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mb-5">
+                <div class="row justify-content-md-center my-2">
+                    <div class="col-md-10">
+                        <input type="text" id="hdnProjectId" hidden/>
+                        <div class="form-group">
+                            <input autocomplete="off" type="text" class="form-control" id="txtTitle" name="txtTitle" placeholder="Project Title">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea class="form-control" id="txtDescription" name="txtDescription" rows="3" placeholder="Project Description"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="datetime" class="form-control k-textboxsmall" id="txtStartDate" name="txtStartDate" placeholder="Starting Date" style="height:25px">
+                        </div>
+                        <div class="form-group">
+                            <input type="datetime" class="form-control" id="txtDueDate" name="txtDueDate" placeholder="Due Date" style="height:25px">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="cmbStatus" style="height:25px">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="mt-5"></div>
+        </div>
+    </div>
+</div>
+*@
+
+@section Scripts {
+    <script src="~/Scripts/Project/GetProject/GetProjectSettings.js" asp-append-version="true"></script>
+    <script src="~/Scripts/Project/GetProject/GetProjectSummery.js" asp-append-version="true"></script>
+    <script src="~/Scripts/Project/ProjectDetails.js" asp-append-version="true"></script>
+    <script src="~/Scripts/Project/GetProject/ProjectTaskSummery.js" asp-append-version="true"></script>
+    <script src="~/Scripts/Project/GetProject/ProjectTaskDetails.js" asp-append-version="true"></script>
+    <script type="text/kendo" id="empTemplate">
+        <ul style="padding-left:8px; list-style-type: none !important;">
+            # for(var i = 0; i< memberInfo.length; i++){ #
+            <li style="padding-left:0px; border: 1px solid skyblue; margin-bottom:2px">#: memberInfo[i].name #</li>
+            # } #
+        </ul>
+    </script>
+    <script type="text/kendo" id="groupTemplate">
+        <ul style="padding-left:8px; list-style-type: none !important">
+            # for(var i = 0; i< groupInfoDto.length; i++){ #
+            <li style="padding-left:0px; border: 1px solid skyblue;margin-bottom:2px ">#: groupInfoDto[i].groupName #</li>
+            # } #
+        </ul>
+    </script>
+} 
